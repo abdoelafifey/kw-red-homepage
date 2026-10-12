@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en" data-auth="guest">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KW RED Homepage</title>
+<meta name="description" content="KW RED — real estate consultation for 60+ developers in Egypt, with over 180 projects nationwide.">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- Navigation mirrors the live redww.com header:
+     Home · Developers · Projects · Units · About us · KW RED (dropdown)
+     Contact Us · عربى · account.
+     The account slot has two states, driven by [data-auth] on <html>. -->
+<header class="nav" id="nav">
+  <div class="nav__in">
+    <a class="logo" href="#top" aria-label="KW RED, home">
+      <img class="logo__img logo__img--light" src="assets/img/logo-light.png" alt="KW RED" width="87" height="41">
+      <img class="logo__img logo__img--dark" src="assets/img/logo-dark.png" alt="" aria-hidden="true" width="87" height="41">
+    </a>
+
+    <nav class="nav__links" aria-label="Main">
+      <a href="#top" aria-current="page">Home</a>
+      <a href="#developers">Developers</a>
+      <a href="#launches">Projects</a>
+      <a href="#units">Units</a>
+      <a href="#expert">About us</a>
+      <div class="menu">
+        <button class="menu__btn" type="button" id="kwBtn" aria-expanded="false" aria-controls="kwMenu">
+          KW RED
+          <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 5l4 4 4-4"/></svg>
+        </button>
+        <div class="menu__pop" id="kwMenu" hidden>
+          <a href="#top" data-demo="Opens KW RED EXPO">KW RED EXPO</a>
+          <a href="#top" data-demo="Opens Blogs">Blogs</a>
+          <a href="#top" data-demo="Opens the Knowledge Hub">Knowledge Hub</a>
+          <a href="#top" data-demo="Opens the Help Center">Help Center</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="nav__side">
+      <button class="btn btn--sm" type="button" data-demo="Opens the Contact Us page">Contact Us</button>
+      <button class="nav__lang" type="button" data-demo="Switches the site to Arabic">عربى</button>
+
+      <!-- signed out -->
+      <button class="acct only-guest" type="button" data-demo="Opens sign in">
+        <span class="acct__av" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM5 21a7 7 0 0 1 14 0"/></svg>
+        </span>
+        Sign in
+      </button>
+
+      <!-- signed in -->
+      <div class="menu only-user">
+        <button class="acct acct--user" type="button" id="userBtn" aria-expanded="false" aria-controls="userMenu">
+          <span class="acct__av acct__av--i" aria-hidden="true">AE</span>
+          <span class="acct__name">Abdelrahman</span>
+          <svg class="acct__chev" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 5l4 4 4-4"/></svg>
+        </button>
+        <div class="menu__pop menu__pop--right" id="userMenu" hidden>
+          <a href="#top" data-demo="Opens My account">My account</a>
+          <a href="#units" data-demo="Opens your recommendations">My recommendations</a>
+          <a href="#top" data-demo="Signs you out" data-signout>Sign out</a>
+        </div>
+      </div>
+
+      <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="sheet">
+        <span></span><span class="sr">Menu</span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="sheet" id="sheet" hidden aria-label="Mobile menu">
+    <a href="#top">Home</a>
+    <a href="#developers">Developers</a>
+    <a href="#launches">Projects</a>
+    <a href="#units">Units</a>
+    <a href="#expert">About us</a>
+    <a href="#top">KW RED EXPO</a>
+    <a href="#top">Blogs</a>
+    <a href="#top">Knowledge Hub</a>
+    <a href="#top">Help Center</a>
+    <a href="#top">عربى</a>
+    <button class="btn" type="button" data-demo="Opens the Contact Us page">Contact Us</button>
+    <div class="sheet__row">
+      <button class="btn btn--ghost only-guest" type="button" data-demo="Opens sign in">Sign in</button>
+      <button class="btn btn--ghost only-user" type="button" data-demo="Opens My account">My account</button>
+      <button class="btn btn--ghost" type="button" data-call>Call 15735</button>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ============ hero ============ -->
+  <section class="hero">
+    <div class="hero__media" id="heroMedia" aria-hidden="true"></div>
+    <div class="wrap hero__in">
+      <div class="hero__copy">
+        <span class="eyebrow only-guest" style="color:rgba(255,255,255,.72)">Keller Williams · Egypt</span>
+        <span class="eyebrow only-user" style="color:rgba(255,255,255,.72)">Welcome back, Abdelrahman</span>
+        <h1 class="h-display only-guest">The address you were <br class="br-lg">looking for, found faster.</h1>
+        <h1 class="h-display only-user">Pick up where <br class="br-lg">you left off.</h1>
+        <p class="lede only-guest">Real estate consultation across 60+ developers and more than 180 projects
+          nationwide — then a KW RED consultant takes it from there.</p>
+        <p class="lede only-user">Your recommendations are further down the page, and a KW RED consultant
+          is one call away whenever you want to move on one.</p>
+        <div class="hero__nav">
+          <div class="hero__dots" id="heroDots" role="tablist" aria-label="Featured destinations"></div>
+          <span class="hero__place" id="heroPlace"></span>
+        </div>
+      </div>
+
+      <!-- Same fields as the live search: area/project/developer, type of home,
+           beds, baths, search, advanced filter -->
+      <form class="search" id="searchForm" role="search">
+        <div class="search__row">
+          <div class="search__field">
+            <label for="q">Find your home</label>
+            <div class="search__input">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM21 21l-4.3-4.3"/></svg>
+              <input id="q" name="q" type="search" list="places" autocomplete="off"
+                     placeholder="Search by area, project or developer">
+            </div>
+            <datalist id="places"></datalist>
+          </div>
+
+          <div class="search__sel">
+            <label for="type">Type of home</label>
+            <select id="type" name="type">
+              <option>Any</option><option>Apartment</option><option>Villa</option>
+              <option>Townhouse</option><option>Twin house</option><option>Chalet</option>
+              <option>Duplex</option><option>Penthouse</option><option>Studio</option>
+            </select>
+          </div>
+
+          <div class="search__sel">
+            <label for="beds">Beds</label>
+            <select id="beds" name="beds">
+              <option>Any</option><option>1</option><option>2</option><option>3</option>
+              <option>4</option><option>5+</option>
+            </select>
+          </div>
+
+          <div class="search__sel">
+            <label for="baths">Baths</label>
+            <select id="baths" name="baths">
+              <option>Any</option><option>1</option><option>2</option><option>3</option>
+              <option>4</option><option>5+</option>
+            </select>
+          </div>
+
+          <div class="search__go">
+            <button class="btn" type="submit">Search</button>
+            <button class="btn btn--ghost" type="button" data-demo="Opens the advanced filter">Advanced filter</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ stats ============ -->
+  <section class="stats">
+    <dl class="wrap stats__in">
+      <div class="stat"><dd class="tnum">60+</dd><dt>Developers we work with</dt></div>
+      <div class="stat"><dd class="tnum">180+</dd><dt>Projects nationwide</dt></div>
+      <div class="stat"><dd class="tnum">23</dd><dt>Districts covered</dt></div>
+      <div class="stat"><dd class="tnum">20</dd><dt>Launches open now</dt></div>
+    </dl>
+  </section>
+
+  <!-- ============ districts ============ -->
+  <section class="band" id="districts">
+    <div class="wrap">
+      <div class="shead">
+        <div class="shead__t">
+          <span class="eyebrow">By location</span>
+          <h2 class="h-sec">Search by district</h2>
+          <p class="lede">The eight districts carrying the most inventory right now, with what we
+            currently have listed in each.</p>
+        </div>
+        <div class="shead__a">
+          <a class="tlink" href="#districts" data-demo="Opens all 23 districts">All 23 districts</a>
+        </div>
+      </div>
+      <ul class="dgrid" id="districts-grid"></ul>
+    </div>
+  </section>
+
+  <!-- ============ launches ============ -->
+  <section class="band band--sand" id="launches">
+    <div class="wrap">
+      <div class="shead">
+        <div class="shead__t">
+          <span class="eyebrow">Now open for registration</span>
+          <h2 class="h-sec">Upcoming launches</h2>
+          <p class="lede">Twenty projects opened for registration across eight districts. Ask for the
+            details and a consultant walks you through the release before it is public.</p>
+        </div>
+        <div class="shead__a">
+          <a class="tlink" href="#launches" data-demo="Opens all launches">View all 20</a>
+          <div class="arrows">
+            <button class="arrow" type="button" id="railPrev" aria-label="Previous launches">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4l-7 8 7 8"/></svg></button>
+            <button class="arrow" type="button" id="railNext" aria-label="Next launches">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l7 8-7 8"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <ul class="rail" id="rail" tabindex="0" aria-label="Upcoming launches, scrollable"></ul>
+      <div class="progress"><i id="railBar"></i></div>
+    </div>
+  </section>
+
+  <!-- ============ units ============ -->
+  <section class="band" id="units">
+    <div class="wrap">
+      <div class="shead">
+        <div class="shead__t">
+          <span class="eyebrow only-guest">Ready and near delivery</span>
+          <span class="eyebrow only-user">Picked for you</span>
+          <h2 class="h-sec only-guest">Recommended units</h2>
+          <h2 class="h-sec only-user">Your recommendations</h2>
+          <p class="lede only-guest">Homes across six projects, with the price, size and delivery date
+            on every card so you can compare without opening each one.</p>
+          <p class="lede only-user">More recommendations, now that you're signed in — with the price,
+            size and delivery date on every card so you can compare without opening each one.</p>
+        </div>
+        <div class="shead__a">
+          <a class="tlink" href="#units" data-demo="Opens the full units list">View all units</a>
+        </div>
+      </div>
+      <ul class="utabs" id="unitTabs" role="tablist" aria-label="Filter units by type"></ul>
+      <ul class="ugrid" id="units-grid"></ul>
+    </div>
+  </section>
+
+  <!-- ============ developers ============ -->
+  <section class="band band--sand" id="developers">
+    <div class="wrap">
+      <div class="shead">
+        <div class="shead__t">
+          <span class="eyebrow">Our partners</span>
+          <h2 class="h-sec">Developers on the platform</h2>
+          <p class="lede">We hold live inventory with more than sixty Egyptian developers. These
+            twelve carry the most projects with us.</p>
+        </div>
+        <div class="shead__a">
+          <a class="tlink" href="#developers" data-demo="Opens the developers list">All developers</a>
+        </div>
+      </div>
+      <ul class="devgrid" id="devs"></ul>
+    </div>
+  </section>
+
+  <!-- ============ expert ============ -->
+  <section class="band band--ink expert" id="expert">
+    <div class="wrap expert__in">
+      <div class="expert__t">
+        <span class="eyebrow">Talk to KW RED</span>
+        <h2 class="h-sec">Let's make your next property move simple.</h2>
+        <p class="lede">Whether you're buying, selling, or renting, our experts are here to help you
+          make the right decision.</p>
+        <div class="expert__acts">
+          <button class="btn btn--light" type="button" data-demo="Opens the Talk to an Expert form">Talk to an Expert</button>
+          <button class="btn btn--ghost" type="button" data-call>Call 15735</button>
+        </div>
+      </div>
+      <!-- the sign-up panel only has a job while signed out -->
+      <div class="panel only-guest">
+        <h3>Find your dream home</h3>
+        <p>Create an account to see more recommendations, save what you like and pick up where you
+          left off.</p>
+        <button class="btn" type="button" data-demo="Opens sign up">Sign up now</button>
+        <p class="panel__alt">Already have an account?
+          <a href="#expert" data-demo="Opens sign in">Sign in</a></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ footer ============ -->
+<footer class="foot">
+  <div class="wrap">
+
+    <div class="foot__top">
+      <div>
+        <h2>Subscribe to our newsletter</h2>
+        <p class="lede" style="margin-top:12px">Enter your email to get exclusive offers, updates
+          about new listings, market trends, company news, and more.</p>
+        <form class="nform" id="newsForm">
+          <label class="sr" for="email">Email address</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required>
+          <button class="btn" type="submit">Subscribe</button>
+        </form>
+        <p class="nmsg" id="newsMsg" role="status" aria-live="polite"></p>
+      </div>
+      <div class="reach">
+        <div class="reach__row"><span class="reach__lab">Hotline</span><span class="reach__big tnum">15735</span></div>
+        <div class="reach__row"><span class="reach__lab">Email</span><span class="reach__em">info@redww.com</span></div>
+        <div class="socials">
+          <a href="https://www.linkedin.com/company/redwweg/">LinkedIn</a>
+          <a href="https://www.instagram.com/redwweg/">Instagram</a>
+          <a href="https://www.youtube.com/channel/UCE3JPIk8ObE0EOrPTCEccOQ">YouTube</a>
+          <a href="https://www.facebook.com/redwweg/">Facebook</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot__grid">
+      <div class="fcol">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="#top">Home</a></li>
+          <li><a href="#developers">Developers</a></li>
+          <li><a href="#launches">Projects</a></li>
+          <li><a href="#units">Units</a></li>
+          <li><a href="#expert">About us</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h3>KW RED</h3>
+        <ul>
+          <li><a href="#top">KW RED EXPO</a></li>
+          <li><a href="#top">Blogs</a></li>
+          <li><a href="#top">Knowledge Hub</a></li>
+          <li><a href="#top">Help Center</a></li>
+          <li><a href="#top">Contact us</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h3>Districts</h3>
+        <ul>
+          <li><a href="#districts">North Coast</a></li>
+          <li><a href="#districts">New Capital</a></li>
+          <li><a href="#districts">Mostakbal City</a></li>
+          <li><a href="#districts">El Sheikh Zayed</a></li>
+          <li><a href="#districts">6th of October</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h3>Projects</h3>
+        <ul>
+          <li><a href="#launches">Al Burouj</a></li>
+          <li><a href="#launches">Zed East</a></li>
+          <li><a href="#launches">Zed West</a></li>
+          <li><a href="#launches">Badya</a></li>
+          <li><a href="#launches">Sodic East</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot__bot">
+      <img class="foot__logo" src="assets/img/logo-light.png" alt="KW RED" width="87" height="41">
+      <span>Copyright &copy; 2026 KW RED. All rights reserved.</span>
+      <p class="foot__note">Design prototype. Project names, developers, districts and contact
+        details come from redww.com. Prices, delivery dates, district counts and developer project
+        counts are placeholder data for layout only.</p>
+    </div>
+
+  </div>
+</footer>
+
+<!-- Floating contact buttons, as on the live site -->
+<div class="fab">
+  <button class="fab__btn fab__btn--wa" type="button" data-demo="Opens WhatsApp" aria-label="Message us on WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.8 8.8 0 0 1-3.8-.9L3 20.5l1.6-4.8A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg>
+  </button>
+  <button class="fab__btn fab__btn--call" type="button" data-call aria-label="Call the hotline 15735">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 16.9v2.6a1.7 1.7 0 0 1-1.9 1.7 17 17 0 0 1-7.4-2.6 16.7 16.7 0 0 1-5.1-5.1A17 17 0 0 1 4 6a1.7 1.7 0 0 1 1.7-1.9h2.6a1.7 1.7 0 0 1 1.7 1.5c.1.8.3 1.7.6 2.4a1.7 1.7 0 0 1-.4 1.8l-1.1 1.1a13.7 13.7 0 0 0 5 5l1.1-1.1a1.7 1.7 0 0 1 1.8-.4c.8.3 1.6.5 2.4.6a1.7 1.7 0 0 1 1.6 1.9z"/></svg>
+  </button>
+</div>
+
+<!-- Prototype-only control. Delete this block and the #authSwitch handler in main.js
+     when the page is wired to a real session. -->
+<div class="proto" id="authSwitch" role="group" aria-label="Preview state">
+  <span class="proto__lab">Preview</span>
+  <button type="button" data-auth-set="guest" aria-pressed="true">Guest</button>
+  <button type="button" data-auth-set="user" aria-pressed="false">Signed in</button>
+</div>
+
+<div id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
